@@ -1,0 +1,37 @@
+//brute force 
+//TC O(n1 × n2)
+//SC ans vector of size n1 → O(n1) space.
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) 
+    {
+        int n1=nums1.size();
+        int n2=nums2.size();
+        vector<int> ans(n1);
+        int a=0;
+
+        for(int i=0;i<n1;i++)
+        {
+            int fetch=nums1[i];
+            auto x=find(nums2.begin(),nums2.end(),fetch);
+            int result=-1;
+            if(x!=nums2.end())
+            {
+            int index=distance(nums2.begin(),x);
+              for(int j=index+1;j<n2;j++)
+                {
+                  if(nums2[j]>fetch)
+                   {
+                    result=nums2[j];
+                    break;
+                   }
+                }
+            }
+                ans[a]=result;
+                ++a;
+        }
+        return ans;
+        
+    }
+};
+
